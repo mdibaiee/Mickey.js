@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 
 <html>
-	
-	<head>
-		
-		<meta charset='UTF-8'>
-		<title>Mickey.js - Mouses are smarter now </title>
-		<link rel='stylesheet' href='./styles.css'>
-		
-	</head>
-	
-	<body>
-	  
-	  <a href="https://github.com/Mahdi-/Mickey.js/"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.pn" alt="Fork me on GitHub"></a>
-		
-		<header>
-		  <h1>Mickey.js</h1>
-		  <p> Mouses are smarter now </p>
-	  </header>
-		
-		<section>
-		  <p>Why Mickey?</p>
-  		<ul>
-  		  <li>No dependecy</li>
-  		  <li>jQuery-like API</li>
-  		  <li>Event-based</li>
-  		  <li>Easy to use</li>  
-  		</ul>
-		
+  
+  <head>
     
-  		<p>Try it yourself:</p>
-  		
-  		<div class='test'>
-  		  <p>Text</p>
+    <meta charset='UTF-8'>
+    <title>Mickey.js - Mouses are smarter now </title>
+    <link rel='stylesheet' href='./styles.css'>
+    
+  </head>
+  
+  <body>
+    
+    <a href="https://github.com/Mahdi-/Mickey.js/"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
+    
+    <header>
+      <h1>Mickey.js</h1>
+      <p> Mouses are smarter now </p>
+    </header>
+    
+    <section>
+      <p>Why Mickey?</p>
+      <ul>
+        <li>No dependecy</li>
+        <li>jQuery-like API</li>
+        <li>Event-based</li>
+        <li>Easy to use</li>  
+      </ul>
+    
+    
+      <p>Try it yourself:</p>
+      
+      <div class='test'>
+        <p>Text</p>
   
         <span class='text'>Cool! I have a follower!</span>
         
@@ -42,106 +42,119 @@
           </pre>
         </code>
         
-  		</div>
-  		
-  		
-  		<div class='test'>
-  		  <p>Image</p>
-  		  <span class='image'>Oh, My! The Smart Micky is right there! *love*</span>
-  		  
-  		  <code>
-  		    <pre>
-  		      Mickey('.image').image( './mickey.png', { boxShadow: '0 0 2px black', width: '114px', height: '136px' } );
-  		    </pre>
-  		  </code>
-  		</div>
-  		
-  		<div class='test'>
-  		  <p>Shadow</p>
-  		  <span class='shadow'>Ehh... my shadow's white? O_o</span>
-  		  
-  		  <code>
-  		    <pre>
-  		      Mickey('.shadow').shadow( 1, 1, 'white' );
-  		    </pre>
-  		  </code>
-  		  
-  		  <span>This feature is still buggy and needs more attention from developers.</span>
-  		</div>
-  		
-  		<div class='test'>
-  		  <p>Blink</p>
-  		  <span class='blink'>Blink, baby, blink!</span>
-  		  
-  		  <code>
-  		    <pre>
-  		      Mickey('.blink').blink(200);
-  		    </pre>
-  		  </code>
-  		</div>
-  		
-  		<div class='test'>
-  		  <p>Timeout</p>
-  		  <span class='timeout'>I'm an arrow, right? *Transform* Now I'm a crosshair! </span>
-  		  
-  		  <code>
-  		    <pre>
-  		      Mickey('.timeout').hover( function() { Mickey('.timeout').timeout('crosshair', 1000, true) });
-  		    </pre>
-  		  </code>
-  		</div>
-  		
-  		<div class='test'>
-  		  <p>Interval</p>
-  		  <span class='interval'>I'm haz better transformers skill!</span>
-  		  
-  		  <code>
-  		    <pre>
-  		      Mickey('.interval').interval('default', 'pointer', 500);
-  		    </pre>
-  		  </code>
-  		</div>
-  		
-  		<div class='test'>
-  		  <p>Relative Mouse Position</p>
-  		  <span id='relative'>Positions! Positions!</span>
-  		  
-  		  <code>
-  		    <pre>
-  		      var relative = document.getElementById('relative');
-  		      relative.addEventListener('mousemove', function(){
-  		        
-  		        var pos = Mickey('#relative').relative();
-  		        relative.innerHTML= 'top:' + pos.top;
-  		        relative.innerHTML+= '  left:' + pos.left;
-  		        
-  		      }) 
-  		    </pre>
-  		  </code>
-  		</div>
-  		
-  		<div class='test'>
-  		  <p>Absolute Mouse Position</p>
-  		  <span id='absolute'>The absolutele one</span>
-  		  
-  		  <code>
-  		    <pre>
-  		      var absolute = document.getElementById('absolute')
-  		      absolute.addEventListener('mousemove', function() {
-  		        
-  		        var pos = Mickey('#absolute').absolute();
-  		        absolute.innerHTML= 'top:' + pos.top;
-  		        absolute.innerHTML+= '  left:' + pos.left;
-  		        
-  		      })
-  		    </pre>
-  		  </code>
-  		</div>
-		
-		</section>
-		
-	</body>
-	
+      </div>
+      
+      
+      <div class='test'>
+        <p>Image</p>
+        <span class='image'>Oh, My! The Smart Micky is right there! *love*</span>
+        
+        <code>
+          <pre>
+            Mickey('.image').image( './mickey.png', { boxShadow: '0 0 2px black', width: '114px', height: '136px' } );
+          </pre>
+        </code>
+      </div>
+      
+      <div class='test'>
+        <p>Shadow</p>
+        <span class='shadow'>Ehh... my shadow's white? O_o</span>
+        
+        <code>
+          <pre>
+            Mickey('.shadow').shadow( 1, 1, 'white' );
+          </pre>
+        </code>
+        
+        <span>This feature is still buggy and needs more attention from developers.</span>
+      </div>
+      
+      <div class='test'>
+        <p>Blink</p>
+        <span class='blink'>Blink, baby, blink!</span>
+        
+        <code>
+          <pre>
+            Mickey('.blink').blink(200);
+          </pre>
+        </code>
+      </div>
+      
+      <div class='test'>
+        <p>Timeout</p>
+        <span class='timeout'>I'm an arrow, right? *Transform* Now I'm a crosshair! </span>
+        
+        <code>
+          <pre>
+            Mickey('.timeout').hover( function() { Mickey('.timeout').timeout('crosshair', 1000, true) });
+          </pre>
+        </code>
+      </div>
+      
+      <div class='test'>
+        <p>Interval</p>
+        <span class='interval'>I'm haz better transformers skill!</span>
+        
+        <code>
+          <pre>
+            Mickey('.interval').interval('default', 'pointer', 500);
+          </pre>
+        </code>
+      </div>
+      
+      <div class='test'>
+        <p>Relative Mouse Position</p>
+        <span id='relative'>Positions! Positions!</span>
+        
+        <code>
+          <pre>
+            var relative = document.getElementById('relative');
+            relative.addEventListener('mousemove', function(){
+              
+              var pos = Mickey('#relative').relative();
+              relative.innerHTML= 'top:' + pos.top;
+              relative.innerHTML+= '  left:' + pos.left;
+              
+            }) 
+          </pre>
+        </code>
+      </div>
+      
+      <div class='test'>
+        <p>Absolute Mouse Position</p>
+        <span id='absolute'>The absolutele one</span>
+        
+        <code>
+          <pre>
+            var absolute = document.getElementById('absolute')
+            absolute.addEventListener('mousemove', function() {
+              
+              var pos = Mickey('#absolute').absolute();
+              absolute.innerHTML= 'top:' + pos.top;
+              absolute.innerHTML+= '  left:' + pos.left;
+              
+            })
+          </pre>
+        </code>
+      </div>
+      
+      <div class='test'>
+        <p>Chase</p>
+        <span id='chase'>Click me and I'll chase you!</span>
+        
+        <code>
+          <pre>
+            Mickey('#chase').click(function() {
+              Mickey().chase();
+            })
+          </pre>
+        </code>
+      </div>
+    
+    </section>
+    
+  </body>
+  
 </html>
 
 
@@ -174,5 +187,9 @@ absolute.addEventListener('mousemove', function() {
   absolute.innerHTML= 'top:' + pos.top;
   absolute.innerHTML+= '  left:' + pos.left;
 
+})
+
+Mickey('#chase').click(function() {
+              Mickey().chase();
 })
 </script>
