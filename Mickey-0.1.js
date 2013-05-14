@@ -232,7 +232,7 @@ Mickey.fn.prototype = {
 	  
 	  Mickey.forEach( this.el, function( target ) {
 
-	    target.addEventListener('mouseover', fn);
+	    target.addEventListener('mouseover', fn );
 
     });
     
@@ -243,7 +243,7 @@ Mickey.fn.prototype = {
   
 	  Mickey.forEach( this.el, function( target ) {
 
-	    target.addEventListener('click', fn);
+	    target.addEventListener('click', fn );
 	    
 	  });
 	  
