@@ -1,0 +1,103 @@
+/* بسم الله الرحمن الرحیم */
+
+* {
+  margin: 0;
+  font-family: Tahoma;
+}
+
+body {
+  
+  background: url('http://www.canonical.com/sites/all/themes/canonical10/images/bg_dotted.png');
+  
+}
+
+
+header {
+  
+  width: 100%;
+  height: 80px;
+  color: white;
+  background: #5E2343;
+  padding-top: 20px;
+  
+}
+
+header h1 {
+  
+  text-align: center;
+  font-size: 25px;
+  
+}
+
+header p {
+  text-align:center;
+  font-size: 14px;
+}
+
+body section {
+  
+  width: 80%;
+  background: #5E2343;
+  display: table;
+  margin: 20px auto;
+  font-size: 15px;
+  padding: 20px 40px;
+  color: white;
+  
+}
+
+body section > p:nth-child(1) {
+  
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  
+}
+
+body section ul {
+  
+  text-align: left;
+  display: table;
+  margin: 10px auto;
+  
+}
+
+body section > p {
+  
+  text-align:left;
+  font-size:20px;
+  
+}
+
+.test {
+  
+  margin: 2% 2%;
+  font-size: 16px;
+  border: 1px solid #662A4A;
+  padding: 30px;
+  
+}
+
+.test p {
+  
+  font-weight: bold;
+  margin: 5px 5px;
+  padding-bottom: 10px;
+  border-bottom: white 1px solid;
+  
+}
+
+.test span:not(.mickey-text) {
+  
+  display: table;
+  width: 50%;
+  height: 50px;
+  padding-top: 20px;
+  margin: 10px;
+  text-align: center;
+  border: 1px solid #4F1E38;
+  background: #D6D6D6;
+  color: black;
+  cursor: default;
+  
+}
