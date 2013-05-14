@@ -122,9 +122,9 @@ Mickey has a long way to go, but these spotted bugs are in priority:
 
 Shadows:
 
-	//FIXME: If `x` and / or `y` are less than 0, clickable parts cannot be clicked ( canvas overlays them )
-	//TODO: We need a way to detect user's mouse model, user's mouse might be ANYTHING, so we need a way to draw the cursor's shadow depending on user's cursor
-	//TODO: Shadow's blur, because of canvas' limited height and width we can't do that correctly
+[Issue #1](https://github.com/Mahdi-/Mickey.js/issues/1)
+[Issue #2](https://github.com/Mahdi-/Mickey.js/issues/2)
+[Issue #3](https://github.com/Mahdi-/Mickey.js/issues/3)
 
 
 License
