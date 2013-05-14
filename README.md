@@ -53,6 +53,7 @@ Default values:
 <b>.interval( from, to, delay )</b>
 
 Has one optional argument `delay` and two must-be-specified arguments `from` and `to`. The cursor changes from `from` to `to` with a `delay` and repeats.
+
 Default values:
 
 	delay = 300
@@ -62,7 +63,8 @@ Default values:
 Has 5 optional arguments `x`, `y`, `color`, `delay` and `id`. Adds a shadow to cursor, placed at right-bottom of the cursor, `x` and `y` are relative positions to shadow's place and cannot be less than 0, `color` specifies shadow's color and `delay` specifies the delay that shadow has to answer to mouse's move, and `className` specifies the `class` attribute gave to the shadow.
 
 Default values:
-		x = 0
+
+	x = 0
 	y = 0
 	color = 'black'
 	delay = 0
