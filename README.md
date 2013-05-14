@@ -4,7 +4,7 @@
 Mickey.js
 =========
 
-Mouses are smarter these days! A handy tool to easily play mouses.
+Mouses are smarter these days! A handy tool that makes it easy to play with mouses.
 Mickey is still a work in progress, so it might have many issues, we'll be glad if you report them.
 View examples here: [Mickey.js](http://mahdi-.github.io/Mickey.js/)
 
@@ -98,6 +98,9 @@ Default values:
 
 Tip: No `effect` is currently available, developers are free to add effects to Mickey.
 
+<b>.chase()</b>
+
+Has no arguments. Calling this function forces scrolls to chase the mouse.
 
 <b>.absolute()</b>
 
@@ -120,11 +123,11 @@ TODO
 
 Mickey has a long way to go, but these spotted bugs are in priority:
 
-Shadows:
+[Issue #1](https://github.com/Mahdi-/Mickey.js/issues/1)
 
-	//FIXME: If `x` and / or `y` are less than 0, clickable parts cannot be clicked ( canvas overlays them )
-	//TODO: We need a way to detect user's mouse model, user's mouse might be ANYTHING, so we need a way to draw the cursor's shadow depending on user's cursor
-	//TODO: Shadow's blur, because of canvas' limited height and width we can't do that correctly
+[Issue #2](https://github.com/Mahdi-/Mickey.js/issues/2)
+
+[Issue #3](https://github.com/Mahdi-/Mickey.js/issues/3)
 
 
 License
