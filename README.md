@@ -4,7 +4,7 @@
 Mickey.js
 =========
 
-Mouses are smarter these days! A handy tool to easily play with mouses.
+Mouses are smarter these days! A handy tool that makes it easy to play with mouses.
 Mickey is still a work in progress, so it might have many issues, we'll be glad if you report them.
 View examples here: [Mickey.js](http://mahdi-.github.io/Mickey.js/)
 
