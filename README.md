@@ -23,7 +23,7 @@ API
 
 Mickey.js has a jQuery-like chained API. Mickey uses `document.querySelectorAll()` to parse selectors, so you have to separate selectors with commas, take a look:
 
-  Mickey('button, .s').blink(200);
+	Mickey('button, .s').blink(200);
 
 Here is a list of Mickey's functions:
 
@@ -37,8 +37,8 @@ Has two optional arguments `delay` and `cursor`. The cursor blinks with a `delay
 
 Defaults values:
 
-  delay = 300
-  cursor = 'default'
+	delay = 300
+	cursor = 'default'
 
 <b>.timeout( cursor, delay, revert )</b>
 
@@ -46,27 +46,27 @@ Has three optional arguments `cursor`, `delay` and `revert`. The current cursor 
 
 Default values:
 
-  cursor = 'pointer'
-  delay = 300
-  revert = undefined
+	cursor = 'pointer'
+	delay = 300
+	revert = undefined
 
 <b>.interval( from, to, delay )</b>
 
 Has one optional argument `delay` and two must-be-specified arguments `from` and `to`. The cursor changes from `from` to `to` with a `delay` and repeats.
 Default values:
 
-  delay = 300
+	delay = 300
 
 <b>.shadow( x, y, color, delay, className )</b>
 
 Has 5 optional arguments `x`, `y`, `color`, `delay` and `id`. Adds a shadow to cursor, placed at right-bottom of the cursor, `x` and `y` are relative positions to shadow's place and cannot be less than 0, `color` specifies shadow's color and `delay` specifies the delay that shadow has to answer to mouse's move, and `className` specifies the `class` attribute gave to the shadow.
 
 Default values:
-  x = 0
-  y = 0
-  color = 'black'
-  delay = 0
-  className = undefined
+		x = 0
+	y = 0
+	color = 'black'
+	delay = 0
+	className = undefined
 
 <b>.text( text, styles, x, y, effect, className )</b>
 
@@ -74,11 +74,11 @@ Has 5 optional arguments `styles`, `x`, `y`, `effect` and `className` and a must
 
 Defaullt values:
 
-  styles = undefined
-  x = 0
-  y = 0
-  effect = undefined
-  className = undefined
+	styles = undefined
+	x = 0
+	y = 0
+	effect = undefined
+	className = undefined
 
 Tip: No `effect` is currently available, developers are free to add effects to Mickey.
 
@@ -88,11 +88,11 @@ Same as `.text( .. )`, with a different of `src` instead of `text`.
 
 Default values:
 
-  styles = undefined
-  x = 0
-  y = 0
-  effect = undefined
-  className = undefined
+	styles = undefined
+	x = 0
+	y = 0
+	effect = undefined
+	className = undefined
 
 Tip: No `effect` is currently available, developers are free to add effects to Mickey.
 
@@ -119,9 +119,9 @@ TODO
 Mickey has a long way to go, but these spotted bugs are in priority:
 
 Shadows:
-  //FIXME: If `x` and / or `y` are less than 0, clickable parts cannot be clicked ( canvas overlays them )
-  //TODO: We need a way to detect user's mouse model, user's mouse might be ANYTHING, so we need a way to draw the cursor's shadow depending on user's cursor
-  //TODO: Shadow's blur, because of canvas' limited height and width we can't do that correctly
+	//FIXME: If `x` and / or `y` are less than 0, clickable parts cannot be clicked ( canvas overlays them )
+	//TODO: We need a way to detect user's mouse model, user's mouse might be ANYTHING, so we need a way to draw the cursor's shadow depending on user's cursor
+	//TODO: Shadow's blur, because of canvas' limited height and width we can't do that correctly
 
 
 License
