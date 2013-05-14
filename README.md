@@ -34,6 +34,7 @@ Needs an argument `selector` which is one or more CSS Selector(s) or an HTML Ele
 <b>.blink( delay, cursor )</b>
 
 Has two optional arguments `delay` and `cursor`. The cursor blinks with a `delay`, if you wan't to specify the cursor to be blinked, add `cursor`.
+
 Defaults values:
   delay = 300
   cursor = 'default'
@@ -41,6 +42,7 @@ Defaults values:
 <b>.timeout( cursor, delay, revert )</b>
 
 Has three optional arguments `cursor`, `delay` and `revert`. The current cursor changes to `cursor` after a `delay`, if `revert` is not null or undefined, the cursor changes back to what it was.
+
 Default values:
   cursor = 'pointer'
   delay = 300
@@ -55,6 +57,7 @@ Default values:
 <b>.shadow( x, y, color, delay, className )</b>
 
 Has 5 optional arguments `x`, `y`, `color`, `delay` and `id`. Adds a shadow to cursor, placed at right-bottom of the cursor, `x` and `y` are relative positions to shadow's place and cannot be less than 0, `color` specifies shadow's color and `delay` specifies the delay that shadow has to answer to mouse's move, and `className` specifies the `class` attribute gave to the shadow.
+
 Default values:
   x = 0
   y = 0
@@ -65,6 +68,7 @@ Default values:
 <b>.text( text, styles, x, y, effect, className )</b>
 
 Has 5 optional arguments `styles`, `x`, `y`, `effect` and `className` and a must-be-specified argument `text`. Adds a `text` that follows the cursor at it's right-bottom corner by default, relative position of text can be changed using `x` and `y`, CSS styles of the text can be specified using an object of styles as `styles` argument, can have different `effect`s and the text's `class` attribute is specified using `className` argument.
+
 Defaullt values:
   styles = undefined
   x = 0
@@ -77,6 +81,7 @@ Tip: No `effect` is currently available, developers are free to add effects to M
 <b>.image( src, styles, x, y, effect, className )</b>
 
 Same as `.text( .. )`, with a different of `src` instead of `text`.
+
 Default values:
   styles = undefined
   x = 0
