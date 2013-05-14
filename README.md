@@ -120,8 +120,6 @@ TODO
 
 Mickey has a long way to go, but these spotted bugs are in priority:
 
-Shadows:
-
 [Issue #1](https://github.com/Mahdi-/Mickey.js/issues/1)
 
 [Issue #2](https://github.com/Mahdi-/Mickey.js/issues/2)
