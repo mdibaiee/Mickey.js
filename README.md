@@ -98,6 +98,9 @@ Default values:
 
 Tip: No `effect` is currently available, developers are free to add effects to Mickey.
 
+<b>.chase()</b>
+
+Has no arguments. Calling this function forces scrolls to chase the mouse.
 
 <b>.absolute()</b>
 
