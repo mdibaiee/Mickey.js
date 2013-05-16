@@ -70,7 +70,7 @@ Default values:
 	delay = 0
 	className = undefined
 
-(Effects)[https://github.com/Mahdi-/Mickey.js#effects]
+[Effects](https://github.com/Mahdi-/Mickey.js#effects)
 
 <b>.text( text, styles, x, y, effect, className )</b>
 
@@ -88,7 +88,7 @@ Built-in effects available:
 
 	heartbeat
 
-(Effects)[https://github.com/Mahdi-/Mickey.js#effects]
+[Effects](https://github.com/Mahdi-/Mickey.js#effects)
 
 <b>.image( src, styles, x, y, effect, className )</b>
 
@@ -102,7 +102,7 @@ Default values:
 	effect = undefined
 	className = undefined
 
-(Effects)[https://github.com/Mahdi-/Mickey.js#effects]
+[Effects](https://github.com/Mahdi-/Mickey.js#effects)
 
 <b>.chase()</b>
 
