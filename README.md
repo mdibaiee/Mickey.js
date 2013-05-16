@@ -58,9 +58,9 @@ Default values:
 
 	delay = 300
 
-<b>.shadow( x, y, color, delay, className )</b>
+<b>.shadow( x, y, color, delay, effect, className )</b>
 
-Has 5 optional arguments `x`, `y`, `color`, `delay` and `id`. Adds a shadow to cursor, placed at right-bottom of the cursor, `x` and `y` are relative positions to shadow's place and cannot be less than 0, `color` specifies shadow's color and `delay` specifies the delay that shadow has to answer to mouse's move, and `className` specifies the `class` attribute gave to the shadow.
+Has 6 optional arguments `x`, `y`, `color`, `delay`, `effect` and `id`. Adds a shadow to cursor, placed at right-bottom of the cursor, `x` and `y` are relative positions to shadow's place and cannot be less than 0, `color` specifies shadow's color and `delay` specifies the delay that shadow has to answer to mouse's move, `effect` specifies if an effect should be used or not and `className` specifies the `class` attribute gave to the shadow.
 
 Default values:
 
@@ -69,6 +69,8 @@ Default values:
 	color = 'black'
 	delay = 0
 	className = undefined
+
+(Effects)[https://github.com/Mahdi-/Mickey.js#effects]
 
 <b>.text( text, styles, x, y, effect, className )</b>
 
@@ -82,9 +84,11 @@ Defaullt values:
 	effect = undefined
 	className = undefined
 
-Effects available:
+Built-in effects available:
 
 	heartbeat
+
+(Effects)[https://github.com/Mahdi-/Mickey.js#effects]
 
 <b>.image( src, styles, x, y, effect, className )</b>
 
@@ -98,7 +102,7 @@ Default values:
 	effect = undefined
 	className = undefined
 
-Tip: No `effect` is currently available, developers are free to add effects to Mickey.
+(Effects)[https://github.com/Mahdi-/Mickey.js#effects]
 
 <b>.chase()</b>
 
@@ -119,6 +123,26 @@ Needs a function as first argument to be called on `mouseover` event.
 <b>.click( function )</b>
 
 Needs a function as first argument to be called on `click` event.
+
+Effects
+=======
+
+We made it easy to make effects for Mickey.
+All you have to do is to make a function and assign it to `Mickey.effects` object that has 3 properties `text`,`shadow` and `image`, your function takes the target element as an argument, for example, text effects, take the `span` element as their argument.
+
+Effects should be placed in an external file and placed in `/Effects` folder.
+
+Example:
+
+	Mickey.effects.text.youreffectname = function( el ) {
+	 // Your effect's code
+	};
+
+That's all, Mickey loops over effects and tries to find the effect that user has called.
+
+Third-party effects:
+
+	none yet :(
 
 TODO
 ====

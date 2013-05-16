@@ -44,6 +44,58 @@ Mickey.fn = function( el ) {
 
 }
 
+Mickey.effect = function( pro, effect, el) {
+  
+  for( var x in Mickey.effects ) {
+    
+    if( x == pro ) {
+      
+      for( var y in Mickey.effects[x] ) {
+        
+        if( y == effect ) return Mickey.effects[x][y]( el )
+        
+      }
+      return
+    }
+    
+  }
+  
+}
+
+Mickey.effects = {
+  
+  shadow: {},
+  text  : {},
+  image : {}
+  
+};
+
+Mickey.effects.text.heartbeat = function( el ) {
+
+  var
+  i = parseInt( el.style.fontSize ) || 14;
+  turn = 0;
+  
+  setInterval( function() {
+    
+    if( turn == 0 && i < 30 ) {
+      el.style.fontSize = i + 'px';
+      i++;
+    }
+    if( i == 30 ) turn = 1;
+      
+    if( turn == 1 && i > 11 ) {
+      el.style.fontSize = i + 'px';
+      i--;
+    }
+          
+    if( i == 11 ) turn = 0;
+                   
+  }, 25 );
+
+};
+
+
 
 
 Mickey.fn.prototype = {
@@ -165,7 +217,7 @@ Mickey.fn.prototype = {
 //TODO: We need a way to detect user's mouse model, user's mouse might be ANYTHING, so we need a way to draw the cursor's shadow depending on user's cursor
 //TODO: Shadow's blur, because of canvas' limited height and width we can't do that correctly
 
-	shadow : function( x, y, color, delay, className ) {
+	shadow : function( x, y, color, delay, effect, className ) {
 	  
 	  Mickey.forEach( this.el, function( target ) {
 	    
@@ -198,7 +250,6 @@ Mickey.fn.prototype = {
   	    
   	  }
   
-  
       target.appendChild( shadow );
       
   	  target.addEventListener('mousemove', function( e ) {
@@ -223,7 +274,10 @@ Mickey.fn.prototype = {
         
       });
 
+
     });
+    
+    if ( effect ) Mickey.effect( 'text', effect, txt );
     
 	  return new Mickey.fn( this.el )	  
 	},
@@ -272,34 +326,6 @@ Mickey.fn.prototype = {
 	  var x = x || 0,
         y = y || 0;
 	  
-	  switch( effect ) {
-    
-        case 'heartbeat':
-        
-  
-        i = 14 || styles.fontSize;
-        turn = 0;
-        setInterval( function() {
-          
-          if( turn == 0 && i < 25 ) {
-            txt.style.fontSize = i + 'px';
-            i++;
-          }
-          if( i == 25 ) turn = 1;
-          
-          if( turn == 1 && i > 14 ){
-            i--;
-            txt.style.fontSize = i + 'px';
-          }
-          
-          if( i == 14 ) turn = 0;
-          
-          
-        }, 30 );
-        
-     }
-	  
-	  
 	  Mickey.forEach( this.el, function( target ) {
 
 	    target.appendChild( txt );
@@ -317,8 +343,11 @@ Mickey.fn.prototype = {
 	      txt.style.display = 'none';
 	      
 	    });
+ 
 	    
 	  });
+	  
+	  if ( effect ) Mickey.effect( 'text', effect, txt );
 	  
 	  return new Mickey.fn( this.el );
 	},
@@ -342,7 +371,8 @@ Mickey.fn.prototype = {
     }
     var x = x || 0,
         y = y || 0;
-        
+
+       
     Mickey.forEach( this.el, function( target ) {
 
       target.appendChild( img )
@@ -362,6 +392,8 @@ Mickey.fn.prototype = {
       });
       
     });
+        
+    if ( effect ) Mickey.effect( 'image', effect, img );
     
     return new Mickey.fn( this.el );
   },
