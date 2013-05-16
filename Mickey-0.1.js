@@ -27,42 +27,6 @@ Mickey.forEach = function( target, fn ) {
   
 }
 
-Mickey.effects = function( effect, element, styles) {
-  
-  switch( effect ) {
-    
-    case 'onebyone-size':
-      
-      var txt = [];
-      
-      for( var i = 0, len = element.innerHTML; i < len; i++ ) {
-        
-        txt.push( element.innerHTML[i] );
-        
-      }
-
-      i = 14 || styles.fontSize;
-      
-      setInterval( function() {
-
-        if( i <= 25 ) { 
-          element.innerHTML = '<span style="font-size:' + i + '">' + txt.join('') + '</span>';
-          i++;
-        }
-        else {
-          
-          element.innerHTML = '<span style="font-size:' + i + '">' + txt.join('') + '</span>';
-          i--;
-          
-        }
-        
-      }, 2 );
-
-    
-    
-  }
-  
-}
 
 /* OPTIONS AVAILABLE:
  * blink :: cursor blinks with a delay
