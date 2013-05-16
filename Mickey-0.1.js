@@ -27,6 +27,43 @@ Mickey.forEach = function( target, fn ) {
   
 }
 
+Mickey.effects = function( effect, element, styles) {
+  
+  switch( effect ) {
+    
+    case 'onebyone-size':
+      
+      var txt = [];
+      
+      for( var i = 0, len = element.innerHTML; i < len; i++ ) {
+        
+        txt.push( element.innerHTML[i] );
+        
+      }
+
+      i = 14 || styles.fontSize;
+      
+      setInterval( function() {
+
+        if( i <= 25 ) { 
+          element.innerHTML = '<span style="font-size:' + i + '">' + txt.join('') + '</span>';
+          i++;
+        }
+        else {
+          
+          element.innerHTML = '<span style="font-size:' + i + '">' + txt.join('') + '</span>';
+          i--;
+          
+        }
+        
+      }, 2 );
+
+    
+    
+  }
+  
+}
+
 /* OPTIONS AVAILABLE:
  * blink :: cursor blinks with a delay
  * chase :: scrolls follow the mouse
@@ -271,6 +308,32 @@ Mickey.fn.prototype = {
 	  var x = x || 0,
         y = y || 0;
 	  
+	  switch( effect ) {
+    
+        case 'heart-beat':
+        
+  
+        i = 14 || styles.fontSize;
+        turn = 0;
+        setInterval( function() {
+          
+          if( turn == 0 && i < 25 ) {
+            txt.innerHTML = '<span style="font-size:' + i + 'px">' + text + '</span>';
+            i++;
+          }
+          if( i == 25 ) turn = 1;
+          
+          if( turn == 1 && i > 14 ){
+            i--;
+            txt.innerHTML = '<span style="font-size:' + i + 'px">' + text + '</span>';
+          }
+          
+          if( i == 14 ) turn = 0;
+          
+          
+        }, 30 );
+        
+     }
 	  
 	  
 	  Mickey.forEach( this.el, function( target ) {

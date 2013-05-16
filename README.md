@@ -82,7 +82,9 @@ Defaullt values:
 	effect = undefined
 	className = undefined
 
-Tip: No `effect` is currently available, developers are free to add effects to Mickey.
+Effects available:
+
+	heartbeat
 
 <b>.image( src, styles, x, y, effect, className )</b>
 
