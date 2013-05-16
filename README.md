@@ -9,6 +9,13 @@ Mickey is still a work in progress, so it might have many issues, we'll be glad 
 View examples here: [Mickey.js](http://mahdi-.github.io/Mickey.js/)
 
 
+Download minified version for production: [Mickey-0.1.min.js](https://raw.github.com/Mahdi-/Mickey.js/master/Mickey-0.1.min.js)
+
+Clone Mickey's repo:
+
+	$ git clone https://github.com/Mahdi-/Mickey.js.git
+
+
 Why Mickey?
 ===========
 <ul>
