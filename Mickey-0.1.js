@@ -282,14 +282,14 @@ Mickey.fn.prototype = {
         setInterval( function() {
           
           if( turn == 0 && i < 25 ) {
-            txt.innerHTML = '<span style="font-size:' + i + 'px" class="mickey-text">' + text + '</span>';
+            txt.style.fontSize = i + 'px';
             i++;
           }
           if( i == 25 ) turn = 1;
           
           if( turn == 1 && i > 14 ){
             i--;
-            txt.innerHTML = '<span style="font-size:' + i + 'px" class="mickey-text">' + text + '</span>';
+            txt.style.fontSize = i + 'px';
           }
           
           if( i == 14 ) turn = 0;
