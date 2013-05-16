@@ -130,7 +130,7 @@ Effects
 We made it easy to make effects for Mickey.
 All you have to do is to make a function and assign it to `Mickey.effects` object that has 3 properties `text`,`shadow` and `image`, your function takes the target element as an argument, for example, text effects, take the `span` element as their argument.
 
-Effects should be placed in an external file and placed in `/Effects` folder.
+Effects should be in an external file and placed in `/effects` folder.
 
 Example:
 
