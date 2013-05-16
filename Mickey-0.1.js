@@ -78,11 +78,11 @@ Mickey.effects.text.heartbeat = function( el ) {
   
   setInterval( function() {
     
-    if( turn == 0 && i < 30 ) {
+    if( turn == 0 && i < 25 ) {
       el.style.fontSize = i + 'px';
       i++;
     }
-    if( i == 30 ) turn = 1;
+    if( i == 25 ) turn = 1;
       
     if( turn == 1 && i > 11 ) {
       el.style.fontSize = i + 'px';
@@ -91,7 +91,7 @@ Mickey.effects.text.heartbeat = function( el ) {
           
     if( i == 11 ) turn = 0;
                    
-  }, 25 );
+  }, 30 );
 
 };
 
@@ -188,7 +188,7 @@ Mickey.fn.prototype = {
 	  
     Mickey.forEach( this.el, function( target ) {
       
-      turn = 0;
+      var turn = 0;
       
       setInterval(function() {
         
