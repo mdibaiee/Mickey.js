@@ -274,7 +274,7 @@ Mickey.fn.prototype = {
 	  
 	  switch( effect ) {
     
-        case 'heart-beat':
+        case 'heartbeat':
         
   
         i = 14 || styles.fontSize;
