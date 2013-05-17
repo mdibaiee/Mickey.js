@@ -70,14 +70,14 @@ Mickey.effects = {
   
 };
 
-Mickey.effects.text.heartbeat = function( el, args ) {
+Mickey.effects.text.heartbeat = function( el, opts ) {
 
   var i = parseInt( el.style.fontSize ) || 14;
   turn = 0,
-  args = args || {};
-  min = args.min || 0,
-  max = args.max || 0,
-  speed = args.speed || 0;
+  opts = opts || {};
+  min = opts.min || 0,
+  max = opts.max || 0,
+  speed = opts.speed || 0;
   setInterval( function() {
     
     if( turn == 0 && i < 25 + max ) {
@@ -97,11 +97,11 @@ Mickey.effects.text.heartbeat = function( el, args ) {
 
 };
 
-Mickey.effects.image.spin = function( el, args ) {
+Mickey.effects.image.spin = function( el, opts ) {
   
   var i = 0,
-      args = args || {},
-      speed = args.speed || 0;
+      opts = opts || {},
+      speed = opts.speed || 0;
       
   setInterval( function() {
 
