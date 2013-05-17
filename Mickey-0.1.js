@@ -45,14 +45,14 @@ Mickey.fn = function( el ) {
 }
 
 Mickey.effect = function( pro, effect, el) {
-  
+
   for( var x in Mickey.effects ) {
     
     if( x == pro ) {
       
       for( var y in Mickey.effects[x] ) {
-        
-        if( y == effect ) return Mickey.effects[x][y]( el )
+
+        if( y == effect.name ) return Mickey.effects[x][y]( el, effect )
         
       }
       return
@@ -70,30 +70,49 @@ Mickey.effects = {
   
 };
 
-Mickey.effects.text.heartbeat = function( el ) {
+Mickey.effects.text.heartbeat = function( el, args ) {
 
-  var
-  i = parseInt( el.style.fontSize ) || 14;
-  turn = 0;
-  
+  var i = parseInt( el.style.fontSize ) || 14;
+  turn = 0,
+  args = args || {};
+  min = args.min || 0,
+  max = args.max || 0,
+  speed = args.speed || 0;
   setInterval( function() {
     
-    if( turn == 0 && i < 25 ) {
+    if( turn == 0 && i < 25 + max ) {
       el.style.fontSize = i + 'px';
       i++;
     }
-    if( i == 25 ) turn = 1;
+    if( i == 25 + max ) turn = 1;
       
-    if( turn == 1 && i > 11 ) {
+    if( turn == 1 && i > 11 + min ) {
       el.style.fontSize = i + 'px';
       i--;
     }
           
-    if( i == 11 ) turn = 0;
+    if( i == 11 + min ) turn = 0;
                    
-  }, 30 );
+  }, 30 + speed );
 
 };
+
+Mickey.effects.image.spin = function( el, args ) {
+  
+  var i = 0,
+      args = args || {},
+      speed = args.speed || 0;
+      
+  setInterval( function() {
+
+    i += 1 + speed;
+    
+    el.style.transform='rotate(' + i + 'deg)';
+    
+    
+  }, 10)
+  
+}
 
 
 
