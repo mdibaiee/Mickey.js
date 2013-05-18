@@ -142,7 +142,15 @@ Needs an object as first argument, this is used to remove EventListeners, take a
 	var x = Mickey().chase();
 	Mickey().stop( x );
 
-If you want to stop `chase`, its Event Listener is not deleted from all elements, it's removed from elements specified in `Mickey()`. This doesn't apply for `.interval` and `.blink` because `chase` uses an Event Listener and when you call stop, the Event Listener is removed, but `.interval` and `.blink` use `setInterval()` and they are not element specified.
+When you `.stop` an object, for example, let's say, `.blink`, the `.blink` is not stopped in the elements it started from, it stops in the elements specified in `Mickey()`:
+
+	var b = Mickey('.foo, #test').blink();
+
+`.blink` was called on `.foo` and `#test`. But when you do this:
+
+	Mickey('.foo').stop( b );
+
+The `#test` still blinks!
 
 **NOTE: FOR NOW, THIS FUNCTION WORKS ON `.chase`, `.interval` and `.blink` ONLY.**
 

@@ -117,7 +117,7 @@ Mickey.fn.prototype = {
   			
   		}
   		
-  		ids.push({ interval : true, id : (function(){var turn = 0; setInterval( func, delay || 300);  return setInterval( func, delay || 300)})() });
+  		ids.push({ interval : true, id : setInterval( func, delay || 300), target : target  });
 
 		});
 		
@@ -178,7 +178,7 @@ Mickey.fn.prototype = {
 
       };
       
-      ids.push({ interval : true, id : setInterval( func, delay || 300) });
+      ids.push({ interval : true, id : setInterval( func, delay || 300), target : target });
 
     });
     
@@ -405,20 +405,16 @@ Mickey.fn.prototype = {
     
     if( obj.rm[0].interval ) {
       
-      for( var y = 0, l = obj.el.length; y < l; y++ ) {
-      
+      for( var x = 0, le = obj.rm.length; x < le; x++ ) {
+
         for( var i = 0, len = this.el.length; i < len; i++ ) {
           
-          for( var x = 0, le = obj.rm.length; x < le; x++ ) {
+          if( obj.rm[x].target == this.el[i] ) {
               
-              if( obj.el[y] == this.el[i] ) {
-                
-                window.clearInterval( obj.rm[x].id );
-                
-              }
-            
+            window.clearInterval( obj.rm[x].id );
+              
           }
-          
+            
         }
       
       }
