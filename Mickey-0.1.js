@@ -38,10 +38,10 @@ Mickey.forEach = function( target, fn ) {
  */
 
 
-Mickey.fn = function( el, listeners ) {
+Mickey.fn = function( el, rm ) {
 	
 	this.el = el;
-	if( listeners ) this.listeners = listeners;
+	if( rm ) this.rm = rm;
 
 }
 
@@ -96,13 +96,11 @@ Mickey.fn.prototype = {
 	
 	blink : function( delay, cursor ) {
 		
-		
+		var ids = [];
 		
 		Mickey.forEach( this.el, function(target) {
 		  
-			var turn = 0;
-			
-  		setInterval(function() {
+  		var func = function() {
   		  
   			if( turn == 0 ) {
   			  
@@ -116,11 +114,14 @@ Mickey.fn.prototype = {
   				turn = 0;
   				
   			}
-  		}, delay || 300);
+  			
+  		}
   		
+  		ids.push({ interval : true, id : (function(){var turn = 0; setInterval( func, delay || 300);  return setInterval( func, delay || 300)})() });
+
 		});
 		
-		return new Mickey.fn( this.el )
+		return new Mickey.fn( this.el, ids)
 	},
 	
 	timeout : function( cursor, delay, ret ) {
@@ -143,6 +144,7 @@ Mickey.fn.prototype = {
             
             }, delay)
         
+        
       }, delay || 300);
       
     });
@@ -153,13 +155,13 @@ Mickey.fn.prototype = {
 	
 	interval : function( from, to, delay ) { // Has same structure as blink
 	  
-	  
+	  var ids = [];
 	  
     Mickey.forEach( this.el, function( target ) {
       
       var turn = 0;
       
-      setInterval(function() {
+      var func = function() {
         
         if( turn == 0 ) {
           
@@ -173,12 +175,14 @@ Mickey.fn.prototype = {
           turn = 0;
           
         }
-        
-      }, delay || 300);
+
+      };
       
+      ids.push({ interval : true, id : setInterval( func, delay || 300) });
+
     });
     
-    return new Mickey.fn( this.el );
+    return new Mickey.fn( this.el, ids );
   },
 	
 
@@ -382,22 +386,42 @@ Mickey.fn.prototype = {
     
   },
   
-  remove : function( obj ) {
+  stop : function( obj ) {
 
-    if( obj.listeners ) {
+    if( obj.rm[0].listener ) { 
       
       for( var i = 0, len = this.el.length; i < len; i++ ) {
         
-        for( var x = 0, le = obj.listeners.length; x < le; x++ ) {
+        for( var x = 0, le = obj.rm.length; x < le; x++ ) {
             
-            this.el[i].removeEventListener( obj.listeners[x].type, obj.listeners[x].listener )
-            console.log( obj.listeners, this.el[i] )
+            this.el[i].removeEventListener( obj.rm[x].type, obj.rm[x].listener )
           
         }
         
         
       }
       
+    }
+    
+    if( obj.rm[0].interval ) {
+      
+      for( var y = 0, l = obj.el.length; y < l; y++ ) {
+      
+        for( var i = 0, len = this.el.length; i < len; i++ ) {
+          
+          for( var x = 0, le = obj.rm.length; x < le; x++ ) {
+              
+              if( obj.el[y] == this.el[i] ) {
+                
+                window.clearInterval( obj.rm[x].id );
+                
+              }
+            
+          }
+          
+        }
+      
+      }
       
     }
     

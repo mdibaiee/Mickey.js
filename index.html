@@ -102,7 +102,7 @@
   		  
   		  <code>
   		    <pre>
-  		      Mickey('.timeout').hover( function() { Mickey('.timeout').timeout('crosshair', 1000, true) });
+  		      Mickey('.timeout').hover( function() { Mickey('.timeout').timeout('crosshair', 500) });
   		    </pre>
   		  </code>
   		</div>
@@ -169,7 +169,7 @@
   		  <span id='stopchase'>Click me to stop chase</span>
   		  <code>
   		    <pre>
-  		      Mickey().remove( chase );
+  		      Mickey().stop( chase );
   		    </pre>
   		  </code>
   		</div>
@@ -193,7 +193,7 @@ Mickey('.shadow').shadow( 1, 1, 'white' );
 
 Mickey('.blink').blink(200);
 
-Mickey('.timeout').hover( function() { Mickey('.timeout').timeout('crosshair', 1000, true) });
+Mickey('.timeout').hover( function() { Mickey('.timeout').timeout('crosshair', 500) });
 
 Mickey('.interval').interval('default', 'pointer', 200);
 
@@ -221,7 +221,7 @@ Mickey('#chase').click(function() {
 })
 
 Mickey('#stopchase').click(function() {
-  Mickey().remove( chase );
+  Mickey().stop( chase );
 });
 
 Mickey('.effect').text( 'Heartbeat!', { color : 'red', textShadow: '0 0 1px red' }, 0, 0, { name : 'heartbeat'} );

@@ -140,16 +140,11 @@ Needs a function as first argument to be called on `click` event.
 Needs an object as first argument, this is used to remove EventListeners, take a look at example:
 
 	var x = Mickey().chase();
-	Mickey().remove( x );
+	Mickey().stop( x );
 
-Note that when you use `Mickey().remove( obj )` EventListenrs are removed from the selector defined in `Mickey()`:
+If you want to stop `chase`, its Event Listener is not deleted from all elements, it's removed from elements specified in `Mickey()`. This doesn't apply for `.interval` and `.blink` because `chase` uses an Event Listener and when you call stop, the Event Listener is removed, but `.interval` and `.blink` use `setInterval()` and they are not element specified.
 
-	var x = Mickey('.mickey, #foo').chase();
-	Mickey('#foo').chase();
-
-This way, `chase` is not removed from `.mickey`.
-
-**NOTE: FOR NOW, THIS FUNCTION WORKS ON `chase` ONLY.**
+**NOTE: FOR NOW, THIS FUNCTION WORKS ON `.chase`, `.interval` and `.blink` ONLY.**
 
 Effects
 =======
