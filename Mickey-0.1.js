@@ -38,13 +38,14 @@ Mickey.forEach = function( target, fn ) {
  */
 
 
-Mickey.fn = function( el ) {
+Mickey.fn = function( el, listeners ) {
 	
 	this.el = el;
+	if( listeners ) this.listeners = listeners;
 
 }
 
-Mickey.effect = function( pro, effect, el) {
+Mickey.effect = function( pro, effect, el ) {
 
   for( var x in Mickey.effects ) {
     
@@ -62,86 +63,35 @@ Mickey.effect = function( pro, effect, el) {
   
 }
 
-Mickey.effects = {
-  
-  shadow: {},
-  text  : {},
-  image : {}
-  
-};
-
-Mickey.effects.text.heartbeat = function( el, opts ) {
-
-  var i = parseInt( el.style.fontSize ) || 14;
-  turn = 0,
-  opts = opts || {};
-  min = opts.min || 0,
-  max = opts.max || 0,
-  speed = opts.speed || 0;
-  setInterval( function() {
-    
-    if( turn == 0 && i < 25 + max ) {
-      el.style.fontSize = i + 'px';
-      i++;
-    }
-    if( i == 25 + max ) turn = 1;
-      
-    if( turn == 1 && i > 11 + min ) {
-      el.style.fontSize = i + 'px';
-      i--;
-    }
-          
-    if( i == 11 + min ) turn = 0;
-                   
-  }, 30 + speed );
-
-};
-
-Mickey.effects.image.spin = function( el, opts ) {
-  
-  var i = 0,
-      opts = opts || {},
-      speed = opts.speed || 0;
-      
-  setInterval( function() {
-
-    i += 1 + speed;
-    
-    el.style.transform='rotate(' + i + 'deg)';
-    
-    
-  }, 10)
-  
-}
-
-
-
 
 Mickey.fn.prototype = {
 	
 	chase : function() {
    
-   
+   var listeners = [];
 
 	 Mickey.forEach( this.el, function( target ) {
-			
-     target.addEventListener('mousemove', function( e ) {
-  			
-  			var
-  			  top = Mickey.top,
-  				left = Mickey.left,
-  				topScrl = window.scrollY,
-  				leftScrl = window.scrollX,
-  				offsetWidth = target.offsetWidth,
-  				offsetHeight = target.offsetHeight;
-  			
-  			window.scroll( ( left - leftScrl ) * ( offsetWidth / 700 ), ( top -  topScrl ) * ( offsetHeight / 700 ) ); // Works on almost every size, tested up to 40000px height & width
-  						
-  		});
-  		
+
+		 var func = function( e ) {
+        
+        var
+          top = Mickey.top,
+          left = Mickey.left,
+          topScrl = window.scrollY,
+          leftScrl = window.scrollX,
+          offsetWidth = target.offsetWidth,
+          offsetHeight = target.offsetHeight;
+        
+        window.scroll( ( left - leftScrl ) * ( offsetWidth / 700 ), ( top -  topScrl ) * ( offsetHeight / 700 ) ); // Works on almost every size, tested up to 40000px height & width
+              
+      }
+     target.addEventListener('mousemove', func);
+     
+  	 listeners.push( { type: 'mousemove', listener: func } );
+  	
 		});
 		
-		return new Mickey.fn( this.el )
+		return new Mickey.fn( this.el , listeners )
 	},
 	
 	blink : function( delay, cursor ) {
@@ -430,9 +380,85 @@ Mickey.fn.prototype = {
 
     return { top : Mickey.top - eTop, left : Mickey.left - eLeft}
     
+  },
+  
+  remove : function( obj ) {
+
+    if( obj.listeners ) {
+      
+      for( var i = 0, len = this.el.length; i < len; i++ ) {
+        
+        for( var x = 0, le = obj.listeners.length; x < le; x++ ) {
+            
+            this.el[i].removeEventListener( obj.listeners[x].type, obj.listeners[x].listener )
+            console.log( obj.listeners, this.el[i] )
+          
+        }
+        
+        
+      }
+      
+      
+    }
+    
   }
 	
 }
+
+
+
+Mickey.effects = {
+  
+  shadow: {},
+  text  : {},
+  image : {}
+  
+};
+
+Mickey.effects.text.heartbeat = function( el, opts ) {
+
+  var i = parseInt( el.style.fontSize ) || 14;
+  turn = 0,
+  opts = opts || {};
+  min = opts.min || 0,
+  max = opts.max || 0,
+  speed = opts.speed || 0;
+  setInterval( function() {
+    
+    if( turn == 0 && i < 25 + max ) {
+      el.style.fontSize = i + 'px';
+      i++;
+    }
+    if( i == 25 + max ) turn = 1;
+      
+    if( turn == 1 && i > 11 + min ) {
+      el.style.fontSize = i + 'px';
+      i--;
+    }
+          
+    if( i == 11 + min ) turn = 0;
+                   
+  }, 30 + speed );
+
+};
+
+Mickey.effects.image.spin = function( el, opts ) {
+  
+  var i = 0,
+      opts = opts || {},
+      speed = opts.speed || 0;
+      
+  setInterval( function() {
+
+    i += 1 + speed;
+    
+    el.style.transform='rotate(' + i + 'deg)';
+    
+    
+  }, 10)
+  
+}
+
 
 document.body.addEventListener('mousemove', function( e ) {
   

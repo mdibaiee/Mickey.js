@@ -34,11 +34,11 @@ Mickey.js has a jQuery-like chained API. Mickey uses `document.querySelectorAll(
 
 Here is a list of Mickey's functions:
 
-<b>Mickey( selector )</b>
+**Mickey( selector )**
 
 Needs an argument `selector` which is one or more CSS Selector(s) or an HTML Element Object.
 
-<b>.blink( delay, cursor )</b>
+**.blink( delay, cursor )**
 
 Has two optional arguments `delay` and `cursor`. The cursor blinks with a `delay`, if you wan't to specify the cursor to be blinked, add `cursor`.
 
@@ -47,7 +47,7 @@ Defaults values:
 	delay = 300
 	cursor = 'default'
 
-<b>.timeout( cursor, delay, revert )</b>
+**.timeout( cursor, delay, revert )**
 
 Has three optional arguments `cursor`, `delay` and `revert`. The current cursor changes to `cursor` after a `delay`, if `revert` is not null or undefined, the cursor changes back to what it was.
 
@@ -57,7 +57,7 @@ Default values:
 	delay = 300
 	revert = undefined
 
-<b>.interval( from, to, delay )</b>
+**.interval( from, to, delay )**
 
 Has one optional argument `delay` and two must-be-specified arguments `from` and `to`. The cursor changes from `from` to `to` with a `delay` and repeats.
 
@@ -79,7 +79,7 @@ Default values:
 
 [Effects](https://github.com/Mahdi-/Mickey.js/#effects)
 
-<b>.text( text, styles, x, y, effect, className )</b>
+**.text( text, styles, x, y, effect, className )**
 
 Has 5 optional arguments `styles`, `x`, `y`, `effect` and `className` and a must-be-specified argument `text`. Adds a `text` that follows the cursor at it's right-bottom corner by default, relative position of text can be changed using `x` and `y`, CSS styles of the text can be specified using an object of styles as `styles` argument, can have different `effect`s<sup>[[effects](https://github.com/Mahdi-/Mickey.js/#effects)]</sup> and the text's `class` attribute is specified using `className` argument.
 
@@ -97,7 +97,7 @@ Built-in effects available:
 
 [Effects](https://github.com/Mahdi-/Mickey.js/#effects)
 
-<b>.image( src, styles, x, y, effect, className )</b>
+**.image( src, styles, x, y, effect, className )**
 
 Same as `.text( .. )`, with a difference of `src` instead of `text`.
 
@@ -115,25 +115,41 @@ Built-in effects available:
 
 [Effects](https://github.com/Mahdi-/Mickey.js/#effects)
 
-<b>.chase()</b>
+**.chase()**
 
 Has no arguments. Calling this function forces scrolls to chase the mouse.
 
-<b>.absolute()</b>
+**.absolute()**
 
 Has no argument, returns an object of mouse's current position with two properties `top` and `left`.
 
-<b>.relative()</b>
+**.relative()**
 
 Has no argument, returns an object of mouse's current position, relative to selector defined in `Mickey( .. )` with two properties `top` and `left`.
 
-<b>.hover( function )</b>
+**.hover( function )**
 
 Needs a function as first argument to be called on `mouseover` event.
 
-<b>.click( function )</b>
+**.click( function )**
 
 Needs a function as first argument to be called on `click` event.
+
+**.remove( object )**
+
+Needs an object as first argument, this is used to remove EventListeners, take a look at example:
+
+	var x = Mickey().chase();
+	Mickey().remove( x );
+
+Note that when you use `Mickey().remove( obj )` EventListenrs are removed from the selector defined in `Mickey()`:
+
+	var x = Mickey('.mickey, #foo').chase();
+	Mickey('#foo').chase();
+
+This way, `chase` is not removed from `.mickey`.
+
+**NOTE: FOR NOW, THIS FUNCTION WORKS ON `chase` ONLY.**
 
 Effects
 =======
