@@ -72,7 +72,7 @@ Mickey.fn.prototype = {
 
 	 Mickey.forEach( this.el, function( target ) {
 
-		 var func = function( e ) {
+		 var fn = function( e ) {
         
         var
           top = Mickey.top,
@@ -85,9 +85,8 @@ Mickey.fn.prototype = {
         window.scroll( ( left - leftScrl ) * ( offsetWidth / 700 ), ( top -  topScrl ) * ( offsetHeight / 700 ) ); // Works on almost every size, tested up to 40000px height & width
               
       }
-     target.addEventListener('mousemove', func);
-     
-  	 listeners.push( { type: 'mousemove', listener: func } );
+     target.addEventListener('mousemove', fn);
+  	 listeners.push({ type : 'mousemove', listener : fn });
   	
 		});
 		
@@ -100,7 +99,7 @@ Mickey.fn.prototype = {
 		
 		Mickey.forEach( this.el, function(target) {
 		  
-  		var func = function() {
+  		var fn = function() {
   		  
   			if( turn == 0 ) {
   			  
@@ -117,7 +116,7 @@ Mickey.fn.prototype = {
   			
   		}
   		
-  		ids.push({ interval : true, id : setInterval( func, delay || 300), target : target  });
+  		ids.push({ interval : true, id : setInterval( fn, delay || 300), target : target  });
 
 		});
 		
@@ -161,7 +160,7 @@ Mickey.fn.prototype = {
       
       var turn = 0;
       
-      var func = function() {
+      var fn = function() {
         
         if( turn == 0 ) {
           
@@ -178,17 +177,12 @@ Mickey.fn.prototype = {
 
       };
       
-      ids.push({ interval : true, id : setInterval( func, delay || 300), target : target });
+      ids.push({ interval : true, id : setInterval( fn, delay || 300), target : target });
 
     });
     
     return new Mickey.fn( this.el, ids );
   },
-	
-
-//FIXME: If `x` and / or `y` are less than 0, clickable parts cannot be clicked ( canvas overlays them )
-//TODO: We need a way to detect user's mouse model, user's mouse might be ANYTHING, so we need a way to draw the cursor's shadow depending on user's cursor
-//TODO: Shadow's blur, because of canvas' limited height and width we can't do that correctly
 
 	shadow : function( x, y, color, delay, effect, className ) {
 	  
@@ -253,29 +247,6 @@ Mickey.fn.prototype = {
     if ( effect ) Mickey.effect( 'text', effect, txt );
     
 	  return new Mickey.fn( this.el )	  
-	},
-	
-	
-	hover : function( fn ) {
-	  
-	  Mickey.forEach( this.el, function( target ) {
-
-	    target.addEventListener('mouseover', fn );
-
-    });
-    
-	  return new Mickey.fn( this.el )
-	},
-	
-	click : function( fn ) {
-  
-	  Mickey.forEach( this.el, function( target ) {
-
-	    target.addEventListener('click', fn );
-	    
-	  });
-	  
-	  return new Mickey.fn( this.el )
 	},
 	
 	text : function( text, styles, x, y, effect, className ) {
@@ -371,6 +342,34 @@ Mickey.fn.prototype = {
     return new Mickey.fn( this.el );
   },
   
+  hover : function( fn ) {
+    
+    var listeners = [];
+    
+    Mickey.forEach( this.el, function( target ) {
+
+      target.addEventListener('mouseover', fn );
+      listeners.push({ type : 'mouseover', listener: fn });
+  
+    });
+    
+    return new Mickey.fn( this.el, listeners )
+  },
+  
+  click : function( fn ) {
+  
+    var listeners = [];
+  
+    Mickey.forEach( this.el, function( target ) {
+
+      target.addEventListener('click', fn );
+      listeners.push({ type : 'click', listener: fn });
+      
+    });
+    
+    return new Mickey.fn( this.el, listeners )
+  },
+  
   absolute : function() {
     
     return { top : Mickey.top, left : Mickey.left };
@@ -393,7 +392,7 @@ Mickey.fn.prototype = {
       for( var i = 0, len = this.el.length; i < len; i++ ) {
         
         for( var x = 0, le = obj.rm.length; x < le; x++ ) {
-            
+
             this.el[i].removeEventListener( obj.rm[x].type, obj.rm[x].listener )
           
         }

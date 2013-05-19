@@ -152,7 +152,7 @@ When you `.stop` an object, for example, let's say, `.blink`, the `.blink` is no
 
 The `#test` still blinks!
 
-**NOTE: FOR NOW, THIS FUNCTION WORKS ON `.chase`, `.interval` and `.blink` ONLY.**
+**NOTE: FOR NOW, THIS FUNCTION WORKS ON `.chase`, `.interval`, `.blink`, `.click` and `.hover` ONLY.**
 
 Effects
 =======
