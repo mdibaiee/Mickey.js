@@ -67,7 +67,7 @@ Default values:
 
 <b>.shadow( x, y, color, delay, effect, className )</b>
 
-Has 6 optional arguments `x`, `y`, `color`, `delay`, `effect` and `id`. Adds a shadow to cursor, placed at right-bottom of the cursor, `x` and `y` are relative positions to shadow's place and cannot be less than 0, `color` specifies shadow's color and `delay` specifies the delay that shadow has to answer to mouse's move, `effect` is an object containing effect's info<sup>[[effects](https://github.com/Mahdi-/Mickey.js/#effects)]</sup>, and `className` specifies the `class` attribute gave to the shadow.
+Has 6 optional arguments `x`, `y`, `color`, `delay`, `effect` and `id`. Adds a shadow to cursor, placed at right-bottom of the cursor, `x` and `y` are relative positions to shadow's place and cannot be less than 0, `color` specifies shadow's color and `delay` specifies the delay that shadow has to answer to mouse's move, `effect` is an object containing effect's info<sup>[[effects](#effects)]</sup>, and `className` specifies the `class` attribute gave to the shadow.
 
 Default values:
 
@@ -77,11 +77,11 @@ Default values:
 	delay = 0
 	className = undefined
 
-[Effects](https://github.com/Mahdi-/Mickey.js/#effects)
+[Effects](#effects)
 
 **.text( text, styles, x, y, effect, className )**
 
-Has 5 optional arguments `styles`, `x`, `y`, `effect` and `className` and a must-be-specified argument `text`. Adds a `text` that follows the cursor at it's right-bottom corner by default, relative position of text can be changed using `x` and `y`, CSS styles of the text can be specified using an object of styles as `styles` argument, can have different `effect`s<sup>[[effects](https://github.com/Mahdi-/Mickey.js/#effects)]</sup> and the text's `class` attribute is specified using `className` argument.
+Has 5 optional arguments `styles`, `x`, `y`, `effect` and `className` and a must-be-specified argument `text`. Adds a `text` that follows the cursor at it's right-bottom corner by default, relative position of text can be changed using `x` and `y`, CSS styles of the text can be specified using an object of styles as `styles` argument, can have different `effect`s<sup>[[effects](#effects)]</sup> and the text's `class` attribute is specified using `className` argument.
 
 Defaullt values:
 
@@ -95,7 +95,7 @@ Built-in effects available:
 
 	heartbeat
 
-[Effects](https://github.com/Mahdi-/Mickey.js/#effects)
+[Effects](#effects)
 
 **.image( src, styles, x, y, effect, className )**
 
@@ -113,7 +113,7 @@ Built-in effects available:
 
 	spin
 
-[Effects](https://github.com/Mahdi-/Mickey.js/#effects)
+[Effects](#effects)
 
 **.chase()**
 
