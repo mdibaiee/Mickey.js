@@ -152,13 +152,14 @@ When you `.stop` an object, for example, let's say, `.blink`, the `.blink` is no
 
 The `#test` still blinks!
 
-**NOTE: FOR NOW, THIS FUNCTION WORKS ON `.chase`, `.interval`, `.blink`, `.click` and `.hover` ONLY.**
+**NOTE: This feature works on `.blink`, `.interval`, `.timeout`, `.image`, `.text`, `.shadow`, `.hover` and `.click`**
 
 Effects
 =======
 
 We made it easy to make effects for Mickey.
-All you have to do is to make a function and assign it to `Mickey.effects` object that has 3 properties `text`,`shadow` and `image`, your function takes the target element and some custom properties as argument, for example, text effects, take the `span` element as their first argument, and other properties as second argument.
+All you have to do is to make a function and assign it to `Mickey.effects` object that has 3 properties `text`,`shadow` and `image`, your function takes an array of elements as argument, for example, text effects, take the `span` elements as their first argument, and other properties as second argument.
+Use `Mickey.forEach( elementsArray, function( element ) )` to loop over elements, it's safe and easy.
 
 	Mickey(selector).text(..,..,..,.., { name : 'effectName', option1 : 'foo' })
 
@@ -166,8 +167,10 @@ Effects should be in an external file and placed in `/effects` folder.
 
 Example:
 
-	Mickey.effects.text.youreffectname = function( el, opts ) {
-	 // Your effect's code
+	Mickey.effects.text.youreffectname = function( els, opts ) {
+	  Mickey.forEach( els, function( el ) {
+	    //Your code
+	  });
 	};
 
 That's all, Mickey loops over effects and tries to find the effect that user has called.

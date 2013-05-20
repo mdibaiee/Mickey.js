@@ -98,6 +98,7 @@ Mickey.fn.prototype = {
 		var ids = [];
 		
 		Mickey.forEach( this.el, function(target) {
+		  var turn = 0;
 		  
   		var fn = function() {
   		  
@@ -186,17 +187,21 @@ Mickey.fn.prototype = {
 
 	shadow : function( x, y, color, delay, effect, className ) {
 	  
+	  var elements = [];
+	  
 	  Mickey.forEach( this.el, function( target ) {
 	    
   	  var shadow = document.createElement('canvas'),
-  	      canvas = shadow.getContext('2d'),
   	      mouse  = target.style.cursor.style;
-  	      
   	  
   	  shadow.setAttribute('width','14'),
   	  shadow.setAttribute('height','21');
   	  shadow.style.position = 'absolute';
   	  shadow.style.display = 'none';
+  	  
+  	  var s = shadow.cloneNode(),
+  	      canvas = s.getContext('2d');
+  	  
   	  if( className ) txt.className = className;
   	  
   	  canvas.fillStyle = color || 'black';
@@ -214,22 +219,23 @@ Mickey.fn.prototype = {
           canvas.lineTo( 0, 0);
           canvas.fill();
           break;
-  	    
+  	   
   	  }
   
-      target.appendChild( shadow );
       
-  	  target.addEventListener('mousemove', function( e ) {
+      target.appendChild( s );
+      
+  	  target.addEventListener('mousemove', function() {
   	    
-  	    shadow.style.display='block';
+  	    s.style.display='block';
   	    
   	    setTimeout( function() {
   	       
     	    x = x || 0,
     	    y = y || 0;
     	    
-    	    shadow.style.top      = Mickey.top + x + 1 + 'px';
-    	    shadow.style.left     = Mickey.left + x + 1 + 'px';
+    	    s.style.top      = Mickey.top + x + 1 + 'px';
+    	    s.style.left     = Mickey.left + x + 1 + 'px';
   	    
   	    }, delay || 0)
   	    
@@ -237,21 +243,23 @@ Mickey.fn.prototype = {
   	  
   	  target.addEventListener('mouseleave', function() {
         
-        shadow.style.display='none';
+        s.style.display='none';
         
       });
 
-
+      elements.push({ element : s });
+      
     });
     
-    if ( effect ) Mickey.effect( 'text', effect, txt );
+    if ( effect ) Mickey.effect( 'shadow', effect, elements );
     
-	  return new Mickey.fn( this.el )	  
+	  return new Mickey.fn( this.el, elements )	  
 	},
 	
 	text : function( text, styles, x, y, effect, className ) {
 	  
-	  var txt = document.createElement('span');
+	  var txt = document.createElement('span'),
+	      elements = [];
 	  
 	  txt.innerHTML = text;
 	  txt.style.position = 'absolute';
@@ -272,34 +280,37 @@ Mickey.fn.prototype = {
 	  
 	  Mickey.forEach( this.el, function( target ) {
 
-	    target.appendChild( txt );
+	    var t = txt.cloneNode();
+	    target.appendChild( t );
 	    
 	    target.addEventListener('mousemove', function( e ) {
 
-        txt.style.display = 'block';
-	      txt.style.top = Mickey.top + 21 + y + 'px';
-	      txt.style.left = Mickey.left + 14 + x + 'px';
+        t.style.display = 'block';
+	      t.style.top = Mickey.top + 21 + y + 'px';
+	      t.style.left = Mickey.left + 14 + x + 'px';
 	      
 	    });
 	    
 	    target.addEventListener('mouseleave', function( e ) {
 	      
-	      txt.style.display = 'none';
+	      t.style.display = 'none';
 	      
 	    });
  
+	    elements.push({ element : t });
 	    
 	  });
 	  
-	  if ( effect ) Mickey.effect( 'text', effect, txt );
+	  if ( effect ) Mickey.effect( 'text', effect, elements );
 	  
-	  return new Mickey.fn( this.el );
+	  return new Mickey.fn( this.el, elements );
 	},
 	
 	image : function( src, styles, x, y, effect, className) {
+	   
+	  var img = document.createElement('img'),
+	      elements = [];
 	  
-	  var 
-	  img = document.createElement('img');
     img.setAttribute('src', src);
     img.style.position = 'absolute';
     img.style.display = 'none';
@@ -319,27 +330,30 @@ Mickey.fn.prototype = {
        
     Mickey.forEach( this.el, function( target ) {
 
-      target.appendChild( img )
+      var i = img.cloneNode();
+      target.appendChild( i );
    
       target.addEventListener('mousemove', function( e ) {
         
-        img.style.display='block';
-        img.style.top = Mickey.top + 21 + y + 'px';
-        img.style.left = Mickey.left + 14 + x + 'px';
+        i.style.display='block';
+        i.style.top = Mickey.top + 21 + y + 'px';
+        i.style.left = Mickey.left + 14 + x + 'px';
         
       });
       
        target.addEventListener('mouseleave', function( e ) {
         
-        img.style.display='none';
+        i.style.display='none';
         
       });
       
+      elements.push({ element : i });
+      
     });
         
-    if ( effect ) Mickey.effect( 'image', effect, img );
+    if ( effect ) Mickey.effect( 'image', effect, elements );
     
-    return new Mickey.fn( this.el );
+    return new Mickey.fn( this.el, elements );
   },
   
   hover : function( fn ) {
@@ -420,6 +434,28 @@ Mickey.fn.prototype = {
       
     }
     
+    if( obj.rm[0].element ) {
+      
+      for( var x = 0, le = this.el.length; x < le; x++ ) {
+        
+        for( var i = 0, len = obj.rm.length; i < len; i++ ) {
+          
+          for( var y = 0, l = this.el[x].childNodes.length; y < l; y++ ) {
+            
+            if( this.el[x].childNodes[y] == obj.rm[i].element ) {
+              
+              this.el[x].removeChild( obj.rm[i].element )
+              
+            }
+            
+          }
+
+        }
+        
+      }
+      
+    }
+    
   }
 	
 }
@@ -434,47 +470,61 @@ Mickey.effects = {
   
 };
 
-Mickey.effects.text.heartbeat = function( el, opts ) {
+Mickey.effects.text.heartbeat = function( els, opts ) {
 
-  var i = parseInt( el.style.fontSize ) || 14;
-  turn = 0,
-  opts = opts || {};
-  min = opts.min || 0,
-  max = opts.max || 0,
-  speed = opts.speed || 0;
-  setInterval( function() {
-    
-    if( turn == 0 && i < 25 + max ) {
-      el.style.fontSize = i + 'px';
-      i++;
-    }
-    if( i == 25 + max ) turn = 1;
+   Mickey.forEach( els, function( el ) {
+
+     var el = el.element,
+         i = parseInt( el.style.fontSize ) || 14;
+         turn = 0,
+         opts = opts || {},
+         min = opts.min || 0,
+         max = opts.max || 0,
+         speed = opts.speed || 0;
+        
+    setInterval( function() {
       
-    if( turn == 1 && i > 11 + min ) {
-      el.style.fontSize = i + 'px';
-      i--;
-    }
-          
-    if( i == 11 + min ) turn = 0;
-                   
-  }, 30 + speed );
+      if( turn == 0 && i < 25 + max ) {
+        el.style.fontSize = i + 'px';
+        i++;
+      }
+      if( i == 25 + max ) turn = 1;
+        
+      if( turn == 1 && i > 11 + min ) {
+        el.style.fontSize = i + 'px';
+        i--;
+      }
+            
+      if( i == 11 + min ) turn = 0;
+                     
+    }, 30 + speed );
+     
+   });
+      
 
 };
 
-Mickey.effects.image.spin = function( el, opts ) {
+Mickey.effects.image.spin = function( els, opts ) {
   
-  var i = 0,
-      opts = opts || {},
-      speed = opts.speed || 0;
+  Mickey.forEach( els, function( el ) {
+    
+    var el = el.element,
+        i = 0,
+        opts = opts || {},
+        speed = opts.speed || 0;
+        
+    setInterval( function() {
+  
+      i += 1 + speed;
       
-  setInterval( function() {
-
-    i += 1 + speed;
+      el.style.transform='rotate(' + i + 'deg)';
+      
+      
+    }, 10)
     
-    el.style.transform='rotate(' + i + 'deg)';
-    
-    
-  }, 10)
+  });
+  
+  
   
 }
 
