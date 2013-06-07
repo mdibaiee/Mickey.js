@@ -40,7 +40,7 @@ Needs an argument `selector` which is one or more CSS Selector(s) or an HTML Ele
 
 **.blink( delay, cursor )**
 
-Has two optional arguments `delay` and `cursor`. The cursor blinks with a `delay`, if you wan't to specify the cursor to be blinked, add `cursor`.
+Has two optional arguments `delay` and `cursor`. The cursor blinks with a `delay`, if you want to specify the cursor to be blinked, add `cursor`.
 
 Defaults values:
 
