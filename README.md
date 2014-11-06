@@ -1,5 +1,4 @@
-<img src='./mickey.png' styles='display:block;text-align:center;margin: 0 auto;'>
-
+THIS IS MY FIRST TRY ON MAKING SOMETHING, REALLY, IGNORE IT. :D
 
 Mickey.js
 =========
